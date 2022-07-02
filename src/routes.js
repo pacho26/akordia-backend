@@ -1,8 +1,8 @@
 import express from 'express';
-import chordsRoutes from './modules/chords/chords.routes.js';
+import songsRoutes from './modules/songs/songs.routes.js';
 
 const router = express.Router();
 
-router.use('/chords', chordsRoutes);
+router.use('/songs', songsRoutes);
 
 export default router;

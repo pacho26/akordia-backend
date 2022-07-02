@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
-const chordsSchema = new Schema(
+const songSchema = new Schema(
   {
     title: {
       type: String,
@@ -37,6 +37,6 @@ const chordsSchema = new Schema(
   }
 );
 
-const Chords = new mongoose.model('Chords', chordsSchema);
+const Song = new mongoose.model('Song', songSchema);
 
-export default Chords;
+export default Song;
