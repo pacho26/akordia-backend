@@ -33,8 +33,23 @@ export const createSong = async (req, res) => {
   }
 };
 
+export const updateSong = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updates = Object.keys(req.body);
+
+    if (!isValidUpdate(updates)) {
+      return res.status(400).send({ error: 'Invalid updates.' });
+    }
+
+    const song = await songMethods.updateSong(id, req.body);
+    res.status(200).send(song);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
+
 export const deleteSong = async (req, res) => {
-  // TODO: Ne radi ni findById, pa prvo to rijesi
   const { id } = req.params;
   try {
     const deletedSong = await songMethods.deleteSong(id);
@@ -47,4 +62,15 @@ export const deleteSong = async (req, res) => {
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
+};
+
+const isValidUpdate = (updates) => {
+  const allowedUpdates = [
+    'title',
+    'alternateTitle',
+    'artist',
+    'content',
+    'youtubeId',
+  ];
+  return updates.every((val) => allowedUpdates.includes(val));
 };

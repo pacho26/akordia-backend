@@ -14,6 +14,7 @@ router
 router
   .route('/:id')
   .get(songsController.getSongById)
+  .patch(songsController.updateSong)
   .delete(songsController.deleteSong);
 
 export default router;

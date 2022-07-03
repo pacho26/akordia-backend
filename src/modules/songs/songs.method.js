@@ -12,7 +12,7 @@ export const getSongById = async (_id) => {
   try {
     return await Song.findOne({ _id });
   } catch (err) {
-    console.log(err);
+    console.log('Error getting song');
   }
 };
 
@@ -32,6 +32,17 @@ export const createSong = async (songData) => {
     return await song.save();
   } catch (err) {
     throw new Error('Error creating song.');
+  }
+};
+
+export const updateSong = async (_id, songData) => {
+  try {
+    return await Song.findOneAndUpdate({ _id }, songData, {
+      new: true,
+      runValidators: true,
+    });
+  } catch (err) {
+    throw new Error(err.message);
   }
 };
 
