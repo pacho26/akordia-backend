@@ -6,8 +6,11 @@ const router = express.Router();
 
 // router.use(auth);
 
-router.route('/').get(songsController.getSongs);
+router
+  .route('/')
+  .get(songsController.getSongs)
+  .post(songsController.createSong);
 
-router.route('/:id').get(songsController.getSong);
+router.route('/:id').get(songsController.getSongById);
 
 export default router;
