@@ -11,6 +11,9 @@ router
   .get(songsController.getSongs)
   .post(songsController.createSong);
 
-router.route('/:id').get(songsController.getSongById);
+router
+  .route('/:id')
+  .get(songsController.getSongById)
+  .delete(songsController.deleteSong);
 
 export default router;

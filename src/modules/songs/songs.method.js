@@ -12,7 +12,7 @@ export const getSongById = async (_id) => {
   try {
     return await Song.findOne({ _id });
   } catch (err) {
-    throw new Error('Error fetching song');
+    console.log(err);
   }
 };
 
@@ -32,5 +32,13 @@ export const createSong = async (songData) => {
     return await song.save();
   } catch (err) {
     throw new Error('Error creating song.');
+  }
+};
+
+export const deleteSong = async (_id) => {
+  try {
+    return await Song.findOneAndDelete({ _id });
+  } catch (err) {
+    throw new Error('Error deleting song');
   }
 };

@@ -1,8 +1,8 @@
-import * as songsMethods from './songs.method.js';
+import * as songMethods from './songs.method.js';
 
 export const getSongs = async (req, res) => {
   try {
-    const songs = await songsMethods.getSongs();
+    const songs = await songMethods.getSongs();
     res.status(200).send(songs);
   } catch (err) {
     res.status(500).send({ error: err.message });
@@ -12,7 +12,7 @@ export const getSongs = async (req, res) => {
 export const getSongById = async (req, res) => {
   const { id } = req.params;
   try {
-    const song = await songsMethods.getSongById(id);
+    const song = await songMethods.getSongById(id);
 
     if (!song) {
       return res.status(404).send({ error: 'Song not found.' });
@@ -26,8 +26,24 @@ export const getSongById = async (req, res) => {
 
 export const createSong = async (req, res) => {
   try {
-    const song = await songsMethods.createSong(req.body);
+    const song = await songMethods.createSong(req.body);
     res.status(201).send(song);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
+
+export const deleteSong = async (req, res) => {
+  // TODO: Ne radi ni findById, pa prvo to rijesi
+  const { id } = req.params;
+  try {
+    const deletedSong = await songMethods.deleteSong(id);
+
+    if (!deletedSong) {
+      return res.status(404).send({ error: 'Song not found.' });
+    }
+
+    return res.status(204).send(deletedSong);
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
