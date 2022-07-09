@@ -7,18 +7,18 @@ const songSchema = new Schema(
     title: {
       type: String,
       required: [true, 'Name not provided.'],
-      maxLength: [50, 'Name too long.'],
+      maxLength: [40, 'Name too long.'],
       trim: true,
     },
     alternativeTitle: {
       type: String,
-      maxLength: [50, 'Name too long.'],
+      maxLength: [40, 'Name too long.'],
       trim: true,
     },
     artist: {
       type: String,
       required: [true, 'Name not provided.'],
-      maxLength: [50, 'Name too long.'],
+      maxLength: [40, 'Name too long.'],
       trim: true,
     },
     youtubeId: {
