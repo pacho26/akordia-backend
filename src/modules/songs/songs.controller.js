@@ -37,6 +37,7 @@ export const updateSong = async (req, res) => {
   const { id } = req.params;
   try {
     const updates = Object.keys(req.body);
+    console.log('updates :>> ', updates);
 
     if (!isValidUpdate(updates)) {
       return res.status(400).send({ error: 'Invalid updates.' });
@@ -67,7 +68,7 @@ export const deleteSong = async (req, res) => {
 const isValidUpdate = (updates) => {
   const allowedUpdates = [
     'title',
-    'alternateTitle',
+    'alternativeTitle',
     'artist',
     'content',
     'youtubeId',
