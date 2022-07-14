@@ -24,7 +24,6 @@ export const register = async (req, res) => {
   }
 };
 
-// Requires bearer token
 export const logout = async (req, res) => {
   try {
     req.user.tokens = [];

@@ -62,7 +62,6 @@ export const updateUser = async (req, res) => {
     if (!isValidUpdate(updates, req.isAdmin)) {
       return res.status(400).send({ error: 'Invalid updates.' });
     }
-    // TODO: password update doesnt work
     const user = await userMethods.updateUser(id, req.body);
     res.status(202).send(user);
   } catch (err) {
