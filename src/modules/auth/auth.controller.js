@@ -23,13 +23,3 @@ export const register = async (req, res) => {
     res.status(500).send({ error: err.message });
   }
 };
-
-export const logout = async (req, res) => {
-  try {
-    req.user.tokens = [];
-    await req.user.save();
-    res.send({ message: 'Logged out' });
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-};
