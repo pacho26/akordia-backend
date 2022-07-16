@@ -31,6 +31,10 @@ const songSchema = new Schema(
       required: [true, 'Content not provided.'],
       maxLength: [4000, 'Content too long.'],
     },
+    author: {
+      type: String,
+      required: [true, 'Author not provided.'],
+    },
   },
   {
     timestamps: true,
