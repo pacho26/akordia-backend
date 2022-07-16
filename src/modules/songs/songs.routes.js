@@ -17,4 +17,6 @@ router
   .patch(songsController.updateSong)
   .delete(songsController.deleteSong);
 
+router.route('/user/:userId').post(songsController.getSongsByUserId);
+
 export default router;

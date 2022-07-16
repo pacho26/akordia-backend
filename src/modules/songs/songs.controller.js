@@ -65,6 +65,21 @@ export const deleteSong = async (req, res) => {
   }
 };
 
+export const getSongsByUserId = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const songs = await songMethods.getSongsByUserId(userId);
+
+    if (!songs) {
+      return res.status(404).send({ error: "User hasn't posted any song" });
+    }
+
+    res.status(200).send(songs);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
+
 const isValidUpdate = (updates) => {
   const allowedUpdates = [
     'title',

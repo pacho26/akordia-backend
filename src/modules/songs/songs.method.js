@@ -53,3 +53,11 @@ export const deleteSong = async (_id) => {
     throw new Error('Error deleting song');
   }
 };
+
+export const getSongsByUserId = async (userId) => {
+  try {
+    return await Song.find({ author: userId });
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
