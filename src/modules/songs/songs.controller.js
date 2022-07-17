@@ -98,7 +98,7 @@ export const getSongsByArtist = async (req, res) => {
 };
 
 export const getSongsBySearchTerm = async (req, res) => {
-  const { searchTerm } = req.params;
+  const { searchTerm } = req.body;
   try {
     const songs = await songMethods.getSongsBySearchTerm(searchTerm);
     if (!songs) {
