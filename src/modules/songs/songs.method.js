@@ -61,3 +61,21 @@ export const getSongsByUserId = async (userId) => {
     throw new Error(err.message);
   }
 };
+
+export const getSongsByArtist = async (artist) => {
+  try {
+    return await Song.find({ artist: artist });
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+export const getSongsBySearchTerm = async (searchTerm) => {
+  try {
+    return await Song.find({
+      title: { $regex: `^${searchTerm}`, $options: 'i' },
+    });
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};

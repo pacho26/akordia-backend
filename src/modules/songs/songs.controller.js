@@ -80,6 +80,37 @@ export const getSongsByUserId = async (req, res) => {
   }
 };
 
+export const getSongsByArtist = async (req, res) => {
+  const { artist } = req.body;
+  try {
+    const songs = await songMethods.getSongsByArtist(artist);
+
+    if (!songs) {
+      return res
+        .status(404)
+        .send({ error: 'There are no songs by the specified artist' });
+    }
+
+    res.status(200).send(songs);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
+
+export const getSongsBySearchTerm = async (req, res) => {
+  const { searchTerm } = req.params;
+  try {
+    const songs = await songMethods.getSongsBySearchTerm(searchTerm);
+    if (!songs) {
+      return res.status(404).send({ error: 'No songs were found' });
+    }
+
+    res.status(200).send(songs);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
+
 const isValidUpdate = (updates) => {
   const allowedUpdates = [
     'title',
