@@ -8,6 +8,47 @@ export const getSongs = async () => {
   }
 };
 
+export const getSongsByUserId = async (userId) => {
+  try {
+    return await Song.find({ author: userId });
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+export const getSongsByArtist = async (artist) => {
+  try {
+    return await Song.find({ artist: artist });
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+export const getSongsBySearchTerm = async (searchTerm) => {
+  try {
+    return await Song.find({
+      title: { $regex: `^${searchTerm}`, $options: 'i' },
+    });
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+export const getArtistsBySearchTerm = async (searchTerm) => {
+  try {
+    const songs = await Song.find({
+      artist: { $regex: `^${searchTerm}`, $options: 'i' },
+    });
+
+    const artists = songs.map((song) => song.artist);
+    console.log('artists :>> ', artists);
+
+    return [...new Set(artists)];
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
 export const getSongById = async (_id) => {
   try {
     return await Song.findOne({ _id });
@@ -51,31 +92,5 @@ export const deleteSong = async (_id) => {
     return await Song.findOneAndDelete({ _id });
   } catch (err) {
     throw new Error('Error deleting song');
-  }
-};
-
-export const getSongsByUserId = async (userId) => {
-  try {
-    return await Song.find({ author: userId });
-  } catch (err) {
-    throw new Error(err.message);
-  }
-};
-
-export const getSongsByArtist = async (artist) => {
-  try {
-    return await Song.find({ artist: artist });
-  } catch (err) {
-    throw new Error(err.message);
-  }
-};
-
-export const getSongsBySearchTerm = async (searchTerm) => {
-  try {
-    return await Song.find({
-      title: { $regex: `^${searchTerm}`, $options: 'i' },
-    });
-  } catch (err) {
-    throw new Error(err.message);
   }
 };

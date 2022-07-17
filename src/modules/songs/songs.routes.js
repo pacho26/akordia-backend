@@ -23,4 +23,6 @@ router.route('/artist').post(songsController.getSongsByArtist);
 
 router.route('/search').post(songsController.getSongsBySearchTerm);
 
+router.route('/search/artists').post(songsController.getArtistsBySearchTerm);
+
 export default router;
