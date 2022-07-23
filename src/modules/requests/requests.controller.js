@@ -17,3 +17,12 @@ export const createRequest = async (req, res) => {
     res.status(500).send({ error: err.message });
   }
 };
+
+export const vote = async (req, res) => {
+  try {
+    const request = await requestsMethods.vote(req.body);
+    res.status(200).send(request);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};

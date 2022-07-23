@@ -8,4 +8,6 @@ router
   .get(songsController.getRandomRequest)
   .post(songsController.createRequest);
 
+router.route('/vote').post(songsController.vote);
+
 export default router;

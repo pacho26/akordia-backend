@@ -28,3 +28,17 @@ export const createRequest = async (requestData) => {
     throw new Error('Error creating request.');
   }
 };
+
+export const vote = async (voteData) => {
+  try {
+    const request = await Request.findOne({ _id: voteData.requestId });
+    if (request.voters.includes(voteData.voterId)) {
+      return;
+    }
+    request.rating += voteData.vote;
+    request.voters.push(voteData.voterId);
+    return await request.save();
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
