@@ -18,6 +18,15 @@ export const createRequest = async (req, res) => {
   }
 };
 
+export const deleteRequest = async (req, res) => {
+  try {
+    const request = await requestsMethods.deleteRequest(req.params.id);
+    res.status(200).send(request);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
+
 export const vote = async (req, res) => {
   try {
     const request = await requestsMethods.vote(req.body);

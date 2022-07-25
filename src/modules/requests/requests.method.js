@@ -29,6 +29,14 @@ export const createRequest = async (requestData) => {
   }
 };
 
+export const deleteRequest = async (_id) => {
+  try {
+    return await Request.findByIdAndDelete({ _id });
+  } catch (err) {
+    throw new Error('Error deleting request.');
+  }
+};
+
 export const vote = async (voteData) => {
   try {
     const request = await Request.findOne({ _id: voteData.requestId });

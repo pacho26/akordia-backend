@@ -1,13 +1,15 @@
 import express from 'express';
-import * as songsController from './requests.controller.js';
+import * as requestController from './requests.controller.js';
 
 const router = express.Router();
 
 router
   .route('/')
-  .get(songsController.getRandomRequest)
-  .post(songsController.createRequest);
+  .get(requestController.getRandomRequest)
+  .post(requestController.createRequest);
 
-router.route('/vote').post(songsController.vote);
+router.route('/:id').delete(requestController.deleteRequest);
+
+router.route('/vote').post(requestController.vote);
 
 export default router;
