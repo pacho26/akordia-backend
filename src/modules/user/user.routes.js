@@ -15,7 +15,7 @@ router.route('/').get([auth, admin], userController.getAllUsers);
 
 router
   .route('/:id')
-  .get([auth, admin], userController.getUser)
+  .get(userController.getUser)
   .patch([auth, admin], userController.updateUser)
   .delete([auth, admin], userController.deleteUser);
 
