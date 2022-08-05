@@ -2,7 +2,8 @@ import * as requestsMethods from './requests.method.js';
 
 export const getRandomRequest = async (req, res) => {
   try {
-    const request = await requestsMethods.getRandomRequest();
+    const { userId } = req.body;
+    const request = await requestsMethods.getRandomRequest(userId);
     res.status(200).send(request);
   } catch (err) {
     res.status(500).send({ error: err.message });

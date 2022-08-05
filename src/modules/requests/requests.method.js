@@ -1,10 +1,20 @@
 import Request from './requests.model.js';
 
-export const getRandomRequest = async () => {
+export const getRandomRequest = async (userId) => {
   try {
-    const requestsLength = await Request.count();
-    const random = Math.floor(Math.random() * requestsLength);
-    return await Request.findOne().skip(random);
+    const numberOfAvailable = await Request.find({
+      voters: { $nin: [userId] },
+      author: { $ne: userId },
+    }).countDocuments();
+    if (numberOfAvailable === 0) {
+      throw new Error('No requests available.');
+    }
+    const random = Math.floor(Math.random() * numberOfAvailable);
+    const request = await Request.findOne().skip(random);
+    return {
+      request,
+      numberOfAvailable,
+    };
   } catch (err) {
     throw new Error(err.message);
   }
