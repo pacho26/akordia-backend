@@ -59,7 +59,7 @@ export const updateUser = async (req, res) => {
     const { id } = req.params;
     const updates = Object.keys(req.body);
 
-    if (!isValidUpdate(updates, req.isAdmin)) {
+    if (!isValidUpdate(updates)) {
       return res.status(400).send({ error: 'Invalid updates.' });
     }
     const user = await userMethods.updateUser(id, req.body);
@@ -82,11 +82,9 @@ export const deleteUser = async (req, res) => {
   }
 };
 
-const isValidUpdate = (updates, isAdmin = false) => {
-  const allowedUpdates = ['username', 'email', 'password', 'role'];
-  if (isAdmin) {
-    allowedUpdates.push('role');
-    allowedUpdates.splice(updates.indexOf('password'), 1);
-  }
+const isValidUpdate = (updates) => {
+  const allowedUpdates = ['band', 'location', 'contact', 'instruments'];
+  allowedUpdates.push('role');
+  allowedUpdates.splice(updates.indexOf('password'), 1);
   return updates.every((val) => allowedUpdates.includes(val));
 };

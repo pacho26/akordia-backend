@@ -35,6 +35,18 @@ const userSchema = new Schema(
       enum: ['user', 'admin'],
       default: 'user',
     },
+    band: {
+      type: String,
+    },
+    location: {
+      type: String,
+    },
+    contact: {
+      type: String,
+    },
+    instruments: {
+      type: Array,
+    },
     tokens: [
       {
         token: {
