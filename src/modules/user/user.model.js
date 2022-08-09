@@ -47,6 +47,10 @@ const userSchema = new Schema(
     instruments: {
       type: Array,
     },
+    numberOfVotes: {
+      type: Number,
+      default: 0,
+    },
     tokens: [
       {
         token: {

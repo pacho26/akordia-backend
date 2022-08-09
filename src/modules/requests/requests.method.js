@@ -1,4 +1,5 @@
 import Request from './requests.model.js';
+import User from '../user/user.model.js';
 
 export const getRandomRequest = async (userId) => {
   try {
@@ -53,6 +54,11 @@ export const vote = async (voteData) => {
     if (request.voters.includes(voteData.voterId)) {
       return;
     }
+    await User.findOneAndUpdate(
+      { _id: voteData.voterId },
+      { $inc: { numberOfVotes: 1 } }
+    );
+
     request.rating += voteData.vote;
     request.voters.push(voteData.voterId);
     return await request.save();
