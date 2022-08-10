@@ -72,3 +72,19 @@ export const deleteUser = async (_id) => {
     throw new Error('Error deleting user');
   }
 };
+
+export const getTopVoters = async () => {
+  try {
+    return await User.find({}).sort({ numberOfVotes: -1 }).limit(5);
+  } catch (err) {
+    throw new Error('Error fetching users.');
+  }
+};
+
+export const getTopAuthors = async () => {
+  try {
+    return await User.find({}).sort({ numberOfSongs: -1 }).limit(5);
+  } catch (err) {
+    throw new Error('Error fetching users.');
+  }
+};

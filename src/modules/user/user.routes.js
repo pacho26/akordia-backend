@@ -19,4 +19,8 @@ router
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
 
+router.route('/top/voters').get(userController.getTopVoters);
+
+router.route('/top/authors').get(userController.getTopAuthors);
+
 export default router;

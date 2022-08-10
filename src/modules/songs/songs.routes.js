@@ -25,4 +25,6 @@ router.route('/search').post(songsController.getSongsBySearchTerm);
 
 router.route('/search/artists').post(songsController.getArtistsBySearchTerm);
 
+router.route('/last/:limit').get(songsController.getLastSongs);
+
 export default router;

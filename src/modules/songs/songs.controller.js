@@ -1,4 +1,5 @@
 import * as songMethods from './songs.method.js';
+import User from '../user/user.model.js';
 
 export const getSongs = async (req, res) => {
   try {
@@ -87,6 +88,10 @@ export const getSongById = async (req, res) => {
 export const createSong = async (req, res) => {
   try {
     const song = await songMethods.createSong(req.body);
+    await User.findOneAndUpdate(
+      { _id: req.body.author },
+      { $inc: { numberOfSongs: 1 } }
+    );
     res.status(201).send(song);
   } catch (err) {
     res.status(500).send({ error: err.message });
@@ -120,6 +125,16 @@ export const deleteSong = async (req, res) => {
     }
 
     return res.status(204).send(deletedSong);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
+
+export const getLastSongs = async (req, res) => {
+  const { limit } = req.params;
+  try {
+    const songs = await songMethods.getLastSongs(limit);
+    res.status(200).send(songs);
   } catch (err) {
     res.status(500).send({ error: err.message });
   }

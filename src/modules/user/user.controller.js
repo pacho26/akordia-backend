@@ -82,6 +82,30 @@ export const deleteUser = async (req, res) => {
   }
 };
 
+export const getTopVoters = async (req, res) => {
+  try {
+    const users = await userMethods.getTopVoters();
+    if (!users) {
+      return res.status(404).send({ error: 'Users not found.' });
+    }
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
+
+export const getTopAuthors = async (req, res) => {
+  try {
+    const users = await userMethods.getTopAuthors();
+    if (!users) {
+      return res.status(404).send({ error: 'Users not found.' });
+    }
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
+
 const isValidUpdate = (updates) => {
   const allowedUpdates = ['band', 'location', 'contact', 'instruments'];
   allowedUpdates.push('role');

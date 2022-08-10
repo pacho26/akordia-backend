@@ -94,3 +94,11 @@ export const deleteSong = async (_id) => {
     throw new Error('Error deleting song');
   }
 };
+
+export const getLastSongs = async (limit) => {
+  try {
+    return await Song.find({}).sort({ createdAt: -1 }).limit(limit);
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
