@@ -1,5 +1,14 @@
 import * as AdvertMethods from './adverts.methods.js';
 
+export const getAdverts = async (req, res) => {
+  try {
+    const adverts = await AdvertMethods.getAdverts();
+    res.status(200).json(adverts);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const getAdvertById = async (req, res) => {
   try {
     const advert = await AdvertMethods.getAdvertById(req.params.id);

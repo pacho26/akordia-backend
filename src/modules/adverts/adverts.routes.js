@@ -3,6 +3,8 @@ import * as advertsController from './adverts.controller.js';
 
 const router = express.Router();
 
+router.route('/').get(advertsController.getAdverts);
+
 router
   .route('/:id')
   .get(advertsController.getAdvertById)

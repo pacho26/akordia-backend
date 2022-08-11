@@ -1,5 +1,14 @@
 import Advert from './adverts.model.js';
 
+export const getAdverts = async () => {
+  try {
+    const adverts = await Advert.find();
+    return adverts;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 export const getAdvertById = async (id) => {
   try {
     return await Advert.findOne({ _id: id });
