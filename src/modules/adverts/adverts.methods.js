@@ -2,7 +2,7 @@ import Advert from './adverts.model.js';
 
 export const getAdvertById = async (id) => {
   try {
-    return await Advert.find({ _id: id });
+    return await Advert.findOne({ _id: id });
   } catch (err) {
     throw new Error('Error fetching advert');
   }
