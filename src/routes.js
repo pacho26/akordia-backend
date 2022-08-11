@@ -12,6 +12,6 @@ router
   .use('/users', userRoutes)
   .use('/songs', songsRoutes)
   .use('/requests', requestsRoutes)
-  .use('/advert', advertsRoutes);
+  .use('/adverts', advertsRoutes);
 
 export default router;
