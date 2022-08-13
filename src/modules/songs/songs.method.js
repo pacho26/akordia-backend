@@ -1,13 +1,5 @@
 import Song from './songs.model.js';
 
-export const getSongs = async () => {
-  try {
-    return await Song.find({});
-  } catch (err) {
-    throw new Error('Error fetching songs');
-  }
-};
-
 export const getSongsByUserId = async (userId) => {
   try {
     return await Song.find({ author: userId });

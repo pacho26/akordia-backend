@@ -29,18 +29,6 @@ export const deleteCurrentUser = async (req, res) => {
   }
 };
 
-export const getAllUsers = async (req, res) => {
-  try {
-    const users = await userMethods.listUsers();
-    if (!users) {
-      return res.status(404).send({ error: 'Users not found.' });
-    }
-    res.status(200).send(users);
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-};
-
 export const getUser = async (req, res) => {
   try {
     const { id } = req.params;

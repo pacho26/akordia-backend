@@ -1,15 +1,6 @@
 import * as songMethods from './songs.method.js';
 import User from '../user/user.model.js';
 
-export const getSongs = async (req, res) => {
-  try {
-    const songs = await songMethods.getSongs();
-    res.status(200).send(songs);
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-};
-
 export const getSongsByUserId = async (req, res) => {
   const { userId } = req.params;
   try {

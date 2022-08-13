@@ -4,12 +4,7 @@ import * as songsController from './songs.controller.js';
 
 const router = express.Router();
 
-// router.use(auth);
-
-router
-  .route('/')
-  .get(songsController.getSongs)
-  .post(songsController.createSong);
+router.route('/').post(songsController.createSong);
 
 router
   .route('/:id')

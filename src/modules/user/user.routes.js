@@ -11,8 +11,6 @@ router
   .patch(auth, userController.updateCurrentUser)
   .delete(auth, userController.deleteCurrentUser);
 
-router.route('/').get([auth, admin], userController.getAllUsers);
-
 router
   .route('/:id')
   .get(userController.getUser)

@@ -7,7 +7,7 @@ const advertSchema = new Schema(
     title: {
       type: String,
       required: [true, 'Title not provided.'],
-      maxLength: [255, 'Title is too long.'],
+      maxLength: [50, 'Title is too long.'],
       trim: true,
     },
     content: {
