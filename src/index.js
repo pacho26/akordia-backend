@@ -9,7 +9,7 @@ import routes from './routes.js';
 
 dotenv.config();
 
-const PORT = process.env.PORT || 8081;
+const port = process.env.PORT || 8081;
 
 const app = express();
 
@@ -26,4 +26,4 @@ app.get('/', (req, res) => {
 
 app.use('/api', routes);
 
-app.listen(PORT, () => console.log(`🚀️ Running on port ${PORT}`));
+app.listen(port, () => console.log(`🚀️ Running on port ${port}`));
