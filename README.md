@@ -8,6 +8,8 @@
     Web app for organizing chords and connecting musicians made as graduation project.
 </p>
 
+<br/>
+
 ### [Postman API Documentation](https://documenter.getpostman.com/view/18786020/VUr1JDGL)
 
 [Backend Deploy](https://chords-backend.herokuapp.com/)
