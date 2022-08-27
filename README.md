@@ -10,6 +10,9 @@
 
 <br/>
 
+<img src='https://i.postimg.cc/QNpcd93X/2022-08-27-0o6-Kleki.png' />
+
+
 ### [Postman API Documentation](https://documenter.getpostman.com/view/18786020/VUr1JDGL)
 
 [Backend Deploy](https://chords-backend.herokuapp.com/)
