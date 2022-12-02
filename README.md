@@ -15,7 +15,7 @@
 
 ### [Postman API Documentation](https://documenter.getpostman.com/view/18786020/VUr1JDGL)
 
-[Backend Deploy](https://chords-backend.herokuapp.com/)
+[Backend Deploy](https://akordia-backend.onrender.com/)
 <br/>
 [Frontend Deploy](https://akordia.vercel.app/)
 <br/>
