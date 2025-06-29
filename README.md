@@ -1,8 +1,4 @@
 # Akordia - backend
-
-<div align="center">
-    <img src='https://i.postimg.cc/Hk8jgYDD/full-logo-akordia.png' />
-</div>
     
 <p align="center">
     Web app for organizing chords and connecting musicians made as college graduation project.
